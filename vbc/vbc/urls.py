@@ -22,3 +22,6 @@ urlpatterns = [
     path('', include('home.urls'))
 
 ]
+admin.site.site_header = "vbcomplaints Admin"
+admin.site.site_title = "vbcomplaints Admin Portal"
+admin.site.index_title = "VIT Bhopal Complain Portal"
