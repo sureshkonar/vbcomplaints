@@ -24,6 +24,7 @@ urlpatterns = [
     path('new_complain', views.newc, name='new_complain'),
     path('profile', views.profile, name='profile'),
     path('signup', views.signup, name='signup'),
-    path('', views.login, name='login'),
-    path('login', views.login, name='login')
+    path('', views.loginUser, name='login'),
+    path('logout', views.logoutUser, name='logout')
+
 ]
