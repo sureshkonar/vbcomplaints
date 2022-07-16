@@ -53,7 +53,7 @@ def profile(request):
 def updateAccount(request):
     if request.method == "POST":
         user = Signup.objects.get(regno=request.user)
-        
+
         user.email = request.POST.get('email')
         user.password = request.POST.get('password')
         user.fullname = request.POST.get('name')
