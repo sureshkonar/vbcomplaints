@@ -1,1 +1,5 @@
 Django==4.0.6
+<<<<<<< HEAD:vbc/requirements.txt
+=======
+gunicorn==20.0.4
+>>>>>>> 266f0df63cd21fb8dcdad4d94c56aa0d1e16997f:requirements.txt
