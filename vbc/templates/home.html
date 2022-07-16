@@ -1,37 +1,29 @@
 {% extends 'homebase.html' %}
 {% block title %}VITB Complain Portal{% endblock title %}
 {% block body %}
-  <div class="alert alert-dark" role="alert">
-  Here are your current complains.
-</div>
-  <table class="table table-dark">
+  <h1 class="my-4 text-center"> Here are your complaints. </h1>
+<div style="width: 900px; margin-left: 15%;">
+    <table class="table table-dark my-5  ">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Complain Number</th>
+      <th scope="col">Subject</th>
+      <th scope="col">Description</th>
+      <th scope="col">Status</th>
     </tr>
   </thead>
   <tbody>
+  {% for complain in complains %}
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <th scope="row">{{complain}}</th>
+      <td>{{complain.sub}}</td>
+      <td>{{complain.desc}}</td>
+      <td>Pending</td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
+  {% endfor %}
+
   </tbody>
 </table>
+
+</div>
 {% endblock body %}

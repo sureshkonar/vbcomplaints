@@ -11,7 +11,7 @@ class Complain(models.Model):
     date = models.DateField()
 
     def __str__(self):
-        return "VITB" + self.regno + str(self.date) + self.complainFor
+        return "VITB" + self.regno + str(self.date).replace('-', '')
 
 
 class Signup(models.Model):

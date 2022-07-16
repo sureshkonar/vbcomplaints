@@ -14,7 +14,9 @@ from django.contrib.auth.models import User
 def home(request):
     if request.user.is_anonymous:
         return redirect('/')
-    return render(request, 'home.html')
+    complains = Complain.objects.all().filter(regno=request.user)
+    context = {'complains':complains}
+    return render(request, 'home.html',context)
 
 
 def newc(request):
