@@ -1,1 +1,1 @@
-web: gunicorn vbcomplaints/vbc/vbc/wsgi.py
+web: gunicorn vbc.wsgi
