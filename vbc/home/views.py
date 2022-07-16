@@ -52,11 +52,23 @@ def signup(request):
         password = request.POST.get('password')
         repeatPassword = request.POST.get('repeatpassword')
         registrationNumber = request.POST.get('registrationno')
+        fullname = request.POST.get('name')
+        hostelGender = request.POST.get('hostelgender')
+        hostelBlock = request.POST.get('hostelBlock')
+        roomNo = request.POST.get('roomNumber')
         if password == repeatPassword:
             User.objects.create_user(username=registrationNumber, email=email, password=password)
-            # userDetails = Signup(name=email, password=password, date=datetime.today(),
-            #                      registrationNumber=registrationNumber)
-            # userDetails.save()
+            userDetails = Signup(
+                email=email,
+                password=password,
+                fullname=fullname,
+                regno=registrationNumber,
+                hostelGender=hostelGender,
+                hostelBlock=hostelBlock,
+                roomNo=roomNo,
+                date=datetime.today()
+            )
+            userDetails.save()
             messages.success(request, "You are successfully registered!")
             return redirect('/')
         else:
