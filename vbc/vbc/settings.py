@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-^ad(773%j03*=sl#33ew18+g1)+^fw)jjrvkgw2w_3)s$4j%i3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://vitbcomplainportal.herokuapp.com/']
+ALLOWED_HOSTS = []
 
 
 # Application definition

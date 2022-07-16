@@ -45,6 +45,26 @@ def newc(request):
 def profile(request):
     if request.user.is_anonymous:
         return redirect('/')
+    users = Signup.objects.all().filter(regno=request.user)
+    context = {'users': users}
+    return render(request, 'profile.html', context)
+
+
+def updateAccount(request):
+    if request.method == "POST":
+        user = Signup.objects.get(regno=request.user)
+        
+        user.email = request.POST.get('email')
+        user.password = request.POST.get('password')
+        user.fullname = request.POST.get('name')
+        user.regno = request.POST.get('registrationno')
+        user.hostelGender = request.POST.get('hostelgender')
+        user.hostelBlock = request.POST.get('hostelBlock')
+        user.roomNo = request.POST.get('roomNumber')
+
+        user.save()
+        messages.success(request, "Profile Successfully updated.")
+        return redirect('profile')
     return render(request, 'profile.html')
 
 
