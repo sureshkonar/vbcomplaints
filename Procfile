@@ -1,1 +1,1 @@
-web: gunicorn vbc.wsgi
+web: gunicorn vbc/vbc.wsgi
