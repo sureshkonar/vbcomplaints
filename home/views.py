@@ -6,7 +6,7 @@ from home.models import Signup
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
-
+import re
 
 # Create your views here.
 
@@ -14,9 +14,7 @@ from django.contrib.auth.models import User
 def home(request):
     if request.user.is_anonymous:
         return redirect('/')
-    complains = Complain.objects.all().filter(regno=request.user)
-    context = {'complains':complains}
-    return render(request, 'home.html',context)
+    return render(request, 'home.html')
 
 
 def newc(request):
@@ -25,6 +23,14 @@ def newc(request):
     if request.method == "POST":
         fullname = request.POST.get('fullname')
         regno = request.POST.get('regno')
+                                                                                 # Registration number Regular Expression 
+        pattern ='[1-2][0,1,9][B,M,PHD][A-Z][A-Z][0-9][0-9][0-9][0-9][0-9]'
+        x= re.match(pattern, regno)
+        if x:
+            print('Valid Registration Number')
+        else:
+            print(request,'Invalid Registration Number')
+            return render(request, 'newcomplaint.html')
         sub = request.POST.get('sub')
         desc = request.POST.get('desc')
         complainFor = request.POST.get('dropdown')
@@ -45,35 +51,45 @@ def newc(request):
 def profile(request):
     if request.user.is_anonymous:
         return redirect('/')
-    users = Signup.objects.all().filter(regno=request.user)
-    context = {'users': users}
-    return render(request, 'profile.html', context)
-
-
-def updateAccount(request):
-    if request.method == "POST":
-        user = Signup.objects.get(regno=request.user)
-
-        user.email = request.POST.get('email')
-        user.password = request.POST.get('password')
-        user.fullname = request.POST.get('name')
-        user.regno = request.POST.get('registrationno')
-        user.hostelGender = request.POST.get('hostelgender')
-        user.hostelBlock = request.POST.get('hostelBlock')
-        user.roomNo = request.POST.get('roomNumber')
-
-        user.save()
-        messages.success(request, "Profile Successfully updated.")
-        return redirect('profile')
     return render(request, 'profile.html')
 
 
 def signup(request):
     if request.method == "POST":
         email = request.POST.get('email')
+                                                                        # Email  Regular Expression 
+        address ='\S.*@vitbhopal.ac.in$'
+        y= re.match(address, email)
+        if y:
+            print('Valid mail')
+        else:
+            print('Invalid Mail , Please Enter "@vitbhopal.ac.in" Domain Mail')
+            messages.warning( request,'Invalid Mail , Please Enter "@vitbhopal.ac.in" Domain Mail...')
+            return render(request, 'signup.html')
+
         password = request.POST.get('password')
         repeatPassword = request.POST.get('repeatpassword')
+                                                                            # Password Format Regular Expression 
+        format = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!#%*?&]{8,18}$"
+        match_re = re.compile(format)
+        res = re.search(match_re,repeatPassword )
+        if res:
+            print("Valid Password")
+        else:
+            print("Invalid Password")
+            messages.warning( request,'Password to be between 8 and 18 characters with at least one capital letter, one number and one special character....')
+            return render(request, 'signup.html')
+
         registrationNumber = request.POST.get('registrationno')
+                                                                            # Registration number Regular Expression 
+        pattern ='[1-2][0,1,9][B,M,PHD][A-Z][A-Z][0-9][0-9][0-9][0-9][0-9]'
+        x= re.match(pattern, registrationNumber)
+        if x:
+            print('Valid Registration Number')
+        else:
+            print('Invalid Registration Number')
+            messages.warning( request,"Invalid Registration Number...")
+            return render(request, 'signup.html')
         fullname = request.POST.get('name')
         hostelGender = request.POST.get('hostelgender')
         hostelBlock = request.POST.get('hostelBlock')
@@ -101,6 +117,17 @@ def signup(request):
 def loginUser(request):
     if request.method == "POST":
         username = request.POST.get('regno')
+                                                                                # Registration number Regular Expression 
+        pattern ='[1-2][0,1,9][B,M,PHD][A-Z][A-Z][0-9][0-9][0-9][0-9][0-9]'
+        x= re.match(pattern, username)
+        if x:
+            print('Valid Registration Number')
+        else:
+            print('Invalid Registration Number')
+            messages.warning( request,"Invalid Registration Number...")
+            return render(request, 'login.html')
+
+
         password = request.POST.get('password')
         user = authenticate(username=username, password=password)
         if user is not None:
