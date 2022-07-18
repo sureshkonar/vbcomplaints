@@ -1,0 +1,31 @@
+{% extends 'homebase.html' %}
+{% block title %}VITB Supervisor Portal{% endblock title %}
+{% block body %}
+  <h1 class="my-4 text-center"> All complaints are displayed below. </h1>
+<div style="width: 900px; margin-left: 15%;">
+    <table class="table table-dark my-5  ">
+  <thead>
+    <tr>
+      <th scope="col">Complain Id</th>
+      <th scope="col">Complain For</th>
+      <th scope="col">Subject</th>
+      <th scope="col">Description</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for complain in complains %}
+    <tr>
+      <th scope="row">{{complain}}</th>
+      <th >{{complain.complainFor}}</th>
+      <td>{{complain.sub}}</td>
+      <td>{{complain.desc}}</td>
+      <td>Pending</td>
+    </tr>
+  {% endfor %}
+
+  </tbody>
+</table>
+
+</div>
+{% endblock body %}

@@ -19,6 +19,14 @@ def home(request):
     return render(request, 'home.html',context)
 
 
+def supervisor(request):
+    if str(request.user) != 'supervisor':
+        return redirect('/')
+    complains = Complain.objects.all()
+    context = {'complains':complains}
+    return render(request, 'supervisor.html', context)
+
+
 def newc(request):
     if request.user.is_anonymous:
         return redirect('/')
