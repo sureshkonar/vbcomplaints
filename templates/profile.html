@@ -1,10 +1,9 @@
 {% extends 'homebase.html' %}
 {% block title %}Profile{% endblock title %}
 {% block body %}
-<div class="container bootstrap snippets bootdey">
+<div style="overflow:hidden ;" class="container bootstrap snippets bootdey">
 
-    <h1 class="text-primary">Edit Profile</h1>
-      <hr>
+
 	<div class="row">
       <!-- left column -->
 
@@ -15,53 +14,60 @@
  </div>
               {% endfor %}
     {% endif %}
+<div style="width:24% ;height:90vh;background-color:blue;position: absolute;left: 0;overflow: hidden;">
+    <img style="width:47%;margin-top:15px;margin-left:10px" src="https://cdn-gbchb.nitrocdn.com/MeaQBNWczsrVNsfBGGgkRxbluXzjQekp/assets/static/optimized/rev-f8cb299/file/2020/01/logochhota.png" alt="">
+    <!-- <h1 style="font-size:37px;margin-top:67px;font-family: gilroy;font-weight: 650;letter-spacing: 1.6px;color:white" class="text-primary">Edit Profile</h1> -->
+    <h1 style="color: ;white;font-size:26px;color:white;margin-top:84px;margin-left: 36px;">Edit Profile</h1>
+<!-- <img src="https://i.pinimg.com/474x/b5/1b/f9/b51bf99a00e587db05f7bf9b365c1ab5.jpg" alt=""> -->
 
-        <h3>Personal info</h3>
+</div>
 
-        <form class="form-horizontal" method="POST" action="updateAccount"  role="form">
+        <h3 style="font-size:38px;font-weight:700;margin-left: 30%;position: absolute;top: 10%;padding-bottom: 30px;">Personal info</h3>
+
+        <form style="margin-left:34% ;margin-top: 90px;overflow-x: hidden;"lass="form-horizontal" method="POST" action="updateAccount"  role="form">
                       {% csrf_token %}
 {% for user in users %}
             <div class="form-group">
-                <label class="col-lg-3 control-label">Full Name:</label>
+                <label style="font-family:gilroy;font-weight: 500;font-size: 18px;margin-left: 15px;" class="col-lg-3 control-label">Full Name:</label>
                 <div class="col-lg-8">
                     <input class="form-control" name = "name" type="text" value={{user.fullname}}>
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-lg-3 control-label">Registration Number:</label>
+                <label style="font-family:gilroy;font-weight: 500;font-size: 18px;margin-left: 15px; margin-top: 6px;" class="col-lg-3 control-label">Registration Number:</label>
                 <div class="col-lg-8">
                     <input class="form-control" name = "registrationno" type="text" value={{user.regno}}>
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-lg-3 control-label">Email:</label>
+                <label style="font-family:gilroy;font-weight: 500;font-size: 18px;margin-left: 15px;margin-top: 6px;" class="col-lg-3 control-label">Email:</label>
                 <div class="col-lg-8">
                     <input class="form-control" name="email" type="text" value={{user.email}}>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-lg-3 control-label">Hostel Boys/Girls</label>
+                <label style="font-family:gilroy;font-weight: 500;font-size: 18px;margin-left: 15px;margin-top: 6px;" class="col-lg-3 control-label">Hostel Boys/Girls</label>
                 <div class="col-lg-8">
                     <input class="form-control" name = "hostelgender" type="text" value={{user.hostelGender}}>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-lg-3 control-label">Hostel Block</label>
+                <label style="font-family:gilroy;font-weight: 500;font-size: 18px;margin-left: 15px;margin-top: 6px;" class="col-lg-3 control-label">Hostel Block</label>
                 <div class="col-lg-8">
                     <input class="form-control" name="hostelBlock" type="text" value={{user.hostelBlock}}>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-lg-3 control-label">Room  Number</label>
+                <label style="font-family:gilroy;font-weight: 500;font-size: 18px;margin-left: 15px;margin-top: 6px;" class="col-lg-3 control-label">Room  Number</label>
                 <div class="col-lg-8">
                     <input class="form-control" name = "roomNumber" type="text" value={{user.roomNo}}>
                 </div>
             </div>
 
                         <div class="form-group">
-                <label class="col-lg-3 control-label">Password</label>
+                <label style="font-family:gilroy;font-weight: 500;font-size: 18px;margin-left: 15px;margin-top: 6px;" class="col-lg-3 control-label">Password</label>
                 <div class="col-lg-8">
                     <input class="form-control" name = "password" type="text" value={{user.password}}>
                 </div>
@@ -69,7 +75,7 @@
 
 {% endfor %}
 <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <button type="sumbit" class="btn btn-primary btn-lg">Register</button>
+                    <button style="font-weight:540 ;letter-spacing: 1px;margin-top: 10px;" type="sumbit" class="btn btn-primary btn-lg">Register</button>
                   </div>
         </form>
 
