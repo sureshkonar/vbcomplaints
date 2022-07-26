@@ -14,16 +14,18 @@ from django.contrib.auth.models import User
 def home(request):
     if request.user.is_anonymous:
         return redirect('/')
+    if str(request.user) == 'supervisor':
+        return redirect('supervisor')
     complains = Complain.objects.all().filter(regno=request.user)
-    context = {'complains':complains}
-    return render(request, 'home.html',context)
+    context = {'complains': complains}
+    return render(request, 'home.html', context)
 
 
 def supervisor(request):
     if str(request.user) != 'supervisor':
         return redirect('/')
     complains = Complain.objects.all()
-    context = {'complains':complains}
+    context = {'complains': complains}
     return render(request, 'supervisor.html', context)
 
 
@@ -78,31 +80,25 @@ def updateAccount(request):
 
 def signup(request):
     if request.method == "POST":
-        email = request.POST.get('email')
+        oldpassword = request.POST.get('oldpassword')
         password = request.POST.get('password')
         repeatPassword = request.POST.get('repeatpassword')
         registrationNumber = request.POST.get('registrationno')
-        fullname = request.POST.get('name')
-        hostelGender = request.POST.get('hostelgender')
-        hostelBlock = request.POST.get('hostelBlock')
-        roomNo = request.POST.get('roomNumber')
-        if password == repeatPassword:
-            User.objects.create_user(username=registrationNumber, email=email, password=password)
-            userDetails = Signup(
-                email=email,
-                password=password,
-                fullname=fullname,
-                regno=registrationNumber,
-                hostelGender=hostelGender,
-                hostelBlock=hostelBlock,
-                roomNo=roomNo,
-                date=datetime.today()
-            )
-            userDetails.save()
-            messages.success(request, "You are successfully registered!")
+
+        user = authenticate(username=registrationNumber, password=oldpassword)
+        if user is not None:
+            if password == repeatPassword:
+                user.set_password(str(password))
+                user.save()
+                messages.success(request, "You have successfully changed your password!")
+                return redirect('/')
+            else:
+                messages.warning(request, "Passwords did not match...")
+
             return redirect('/')
         else:
-            messages.warning(request, "Passwords did not match...")
+            messages.warning(request, "Invalid Credentials...")
+
     return render(request, 'signup.html')
 
 
