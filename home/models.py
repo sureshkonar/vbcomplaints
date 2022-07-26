@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 # Create your models here.
@@ -14,15 +15,12 @@ class Complain(models.Model):
         return "VITB" + self.regno + str(self.date).replace('-', '')
 
 
-class Signup(models.Model):
-    email = models.CharField(max_length=122)
-    password = models.CharField(max_length=16)
-    fullname = models.CharField(max_length=122)
-    regno = models.CharField(max_length=10)
-    hostelGender = models.CharField(max_length=20)
-    hostelBlock = models.CharField(max_length=10)
-    roomNo = models.CharField(max_length=10)
+class Account(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    hostelGender = models.CharField(max_length=20, choices=[('Boys Hostel','Boys Hostel'), ('Girls Hostel','Girls Hostel')])
+    hostelBlock = models.CharField(max_length=10, choices=[('Block 1','Block 1'),('Block 2','Block 2'),('Block 3','Block 3'),('Block 4','Block 4')])
+    roomNo = models.CharField(max_length=5)
     date = models.DateField()
 
     def __str__(self):
-        return self.regno
+        return self.user.username

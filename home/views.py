@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render, HttpResponse, redirect
 from datetime import datetime
 from home.models import Complain
-from home.models import Signup
+from home.models import Account
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
@@ -55,14 +55,15 @@ def newc(request):
 def profile(request):
     if request.user.is_anonymous:
         return redirect('/')
-    users = Signup.objects.all().filter(regno=request.user)
+    users = User.objects.all().filter(username=request.user)
     context = {'users': users}
+
     return render(request, 'profile.html', context)
 
 
 def updateAccount(request):
     if request.method == "POST":
-        user = Signup.objects.get(regno=request.user)
+        user = Account.objects.get(regno=request.user)
 
         user.email = request.POST.get('email')
         user.password = request.POST.get('password')
