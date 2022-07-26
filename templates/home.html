@@ -7,6 +7,7 @@
   <thead>
     <tr>
       <th style="border-bottom: 2px solid white;" scope="col">Complain Id</th>
+      <th style="border-bottom: 2px solid white;" scope="col">Hostel Details</th>
       <th style="border-bottom: 2px solid white;" scope="col">Complain For</th>
       <th style="border-bottom: 2px solid white;" scope="col">Subject</th>
       <th style="border-bottom: 2px solid white;" scope="col">Description</th>
@@ -17,6 +18,7 @@
   {% for complain in complains %}
     <tr>
       <th scope="row">{{complain.id}}</th>
+      <th >{{complain.roomDetails}}</th>
       <th >{{complain.complainFor}}</th>
       <td>{{complain.sub}}</td>
       <td>{{complain.desc}}</td>

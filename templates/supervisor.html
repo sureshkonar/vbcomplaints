@@ -15,6 +15,7 @@
   <thead>
     <tr>
       <th scope="col">Complain Id</th>
+        <th  scope="col">Hostel Details</th>
       <th scope="col">Complain For</th>
       <th scope="col">Subject</th>
       <th scope="col">Description</th>
@@ -29,6 +30,7 @@
       <th>
           <select name = "complainId"> <option hidden="hidden" value="{{complain.id}}">{{complain.id}}</option></select>
       </th>
+      <th >{{complain.roomDetails}}</th>
       <th >{{complain.complainFor}}</th>
       <td>{{complain.sub}}</td>
       <td>{{complain.desc}}</td>

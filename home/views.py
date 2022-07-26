@@ -39,6 +39,7 @@ def newc(request):
         sub = request.POST.get('sub')
         desc = request.POST.get('desc')
         complainFor = request.POST.get('dropdown')
+        roomDetails = request.POST.get('roomDetails')
         date = datetime.now()
         complainDetails = Complain(
             fullname=fullname,
@@ -47,7 +48,8 @@ def newc(request):
             sub=sub,
             desc=desc,
             date=date,
-            id = "VITBC" + regno + str(date.strftime("%d%m%Y%H%M%S"))
+            id="VITBC" + regno + str(date.strftime("%d%m%Y%H%M%S")),
+            roomDetails=roomDetails
         )
         complainDetails.save()
         messages.success(request, "Your Complain is successfully Submitted!")
