@@ -20,8 +20,17 @@
       <th >{{complain.complainFor}}</th>
       <td>{{complain.sub}}</td>
       <td>{{complain.desc}}</td>
-      <td>Pending</td>
+      <td><select id="userType">
+        <option style="background-color:#008CBA; color:white; border:none; font-family: gilroy; " value="Select" disabled selected 
+        id="myDefault">Select</option>
+        <option style="border:none;font-family: gilroy;" value="1">Pending</option>
+        <option style="border:none;font-family: gilroy;" value="2">Seen</option>
+        <option style="border:none;font-family: gilroy;" value="3">Completed</option>
+
+     </select>
+<button style="background-color:#4CAF50;border:none;color:white; "  type="button" name="button"onclick="addOption()">submit</button></td></td>
     </tr>
+    
   {% endfor %}
 
   </tbody>

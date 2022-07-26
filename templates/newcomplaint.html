@@ -2,15 +2,17 @@
 {% block title %}New Complaint{% endblock title %}
 {% block body %}
 
-<form class="h-100 h-custom gradient-custom-2"method = "post" action = "new_complain">
+<form style="background-color:rgb(0, 89, 255) ;" class="h-100 h-custom gradient-custom-2"method = "post" action = "new_complain">
           {% csrf_token %}
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-12">
-        <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+  <div style="background-color:rgb(0, 89, 255);" class="container py-5 h-100">
+    <div style="background-color:rgb(0, 89, 255) ;" class="row d-flex justify-content-center align-items-center h-100">
+      <div  class="col-12">
+        <div style="background-color:rgb(0, 89, 255);border: none;" class="card card-registration card-registration-2" style="border-radius: 15px;">
+          <!-- <img style="width:25% ;" src="https://png.pngtree.com/png-vector/20200519/ourlarge/pngtree-working-at-home-co-working-space-concept-illustration-young-people-man-png-image_2209202.jpg" alt="" srcset=""> -->
           <div class="card-body p-0">
 
-            <div class="row g-0">
+    <div style="background-color:#2a2a72;background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);width: 60%;margin-left: 20%;border-radius: 25px;" class="row d-flex justify-content-center align-items-center h-100">
+      <div  class="row g-0">
               <div class="col-lg-100">
                 <div class="p-5">
 
@@ -22,11 +24,11 @@
  </div>
               {% endfor %}
     {% endif %}
-                    <h3 class="fw-normal mb-5" style="color: #4835d4;">VIT Bhopal Complain Register Portal</h3>
+                    <h3 style="font-family:Arial;font-weight: 900;color:rgb(9, 9, 170);font-size: 44px;font-style:bolder ;margin-left: 63px;" class="fw-normal mb-5" > Complain Register Portal</h3>
 
-                    <select class="select" name = "dropdown">
-                      <option value="None">Choose The Field You Want to Complain For</option>
-                      <option value="Mess">Mess</option>
+                    <select style="font-weight:600;font-size: 19px;font-family: gilroy;letter-spacing: 0.5px;border: none;border-radius: 10px;margin-left: 87px;" class="select" name = "dropdown">
+                      <option  value="None">Choose The Field You Want to Complain For</option>
+                      <option  value="Mess">Mess</option>
                       <option value="Drinking Water">Drinking Water</option>
                       <option value="Wifi">Wifi</option>
                       <option value="Washrooms">Washrooms</option>
@@ -40,7 +42,7 @@
 
                       <div class="form-outline">
                         <input type="text" id="form3Examplev2" name = "regno" class="form-control form-control-lg" />
-                        <label class="form-label" for="form3Examplev2">Your Registration Number</label>
+                        <label style="color: white;font-family:gilroy;font-weight: 500;font-size: 18px;margin-top: 9px;margin-left: 15px;" class="form-label" for="form3Examplev2">Your Registration Number</label>
                       </div>
 
                     </div>
@@ -48,7 +50,7 @@
 
                       <div class="form-outline">
                         <input type="text" id="form3Examplev3" name = "fullname" class="form-control form-control-lg" />
-                        <label class="form-label" for="form3Examplev3">Your Full Name</label>
+                        <label style="color: white;font-family:gilroy;font-weight: 500;font-size: 18px;margin-top: 9px;margin-left: 15px;" class="form-label" for="form3Examplev3">Your Full Name</label>
                       </div>
 
                     </div>
@@ -57,7 +59,7 @@
                   <div class="mb-4 pb-2">
                     <div class="form-outline">
                       <input type="text" id="form3Examplev4" name = "sub" class="form-control form-control-lg" />
-                      <label class="form-label" for="form3Examplev4">Subject of Complain</label>
+                      <label style="color: white;font-family:gilroy;font-weight: 500;font-size: 18px;margin-top: 9px;margin-left: 15px;" class="form-label" for="form3Examplev4">Subject of Complain</label>
                     </div>
                   </div>
 
@@ -67,7 +69,7 @@
                       <div class="form-outline">
                         <textarea class="form-control col-xs-12" id="form3Examplev5" name ="desc" rows="5" cols="5000"></textarea>
 
-                        <label class="form-label" for="form3Examplev5">Write your concerns in brief</label>
+                        <label style="color: white;font-family:gilroy;font-weight: 500;font-size: 18px;margin-top: 9px;margin-left: 15px;" class="form-label" for="form3Examplev5">Write your concerns in brief</label>
                       </div>
 
                     </div>
@@ -75,7 +77,7 @@
 
                 </div>
               </div>
-            <button type="button center" class="btn btn-dark btn-lg" data-mdb-ripple-color="dark">Register</button>
+<button style="letter-spacing:1px;font-weight: 640;background-color: #2a2a72;background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);font-size: 25px;" type="button center" class="btn btn-dark btn-lg" data-mdb-ripple-color="dark">Register</button>
             </div>
           </div>
         </div>
