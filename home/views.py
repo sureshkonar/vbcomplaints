@@ -1,8 +1,7 @@
 from django.contrib.auth import authenticate, login
-from django.shortcuts import render, HttpResponse, redirect
-from datetime import datetime
+from django.shortcuts import render, redirect
+from datetime import datetime, date
 from home.models import Complain
-from home.models import Account
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
@@ -32,24 +31,28 @@ def supervisor(request):
 def newc(request):
     if request.user.is_anonymous:
         return redirect('/')
+    users = User.objects.all().filter(username=request.user)
+    context = {'users': users}
     if request.method == "POST":
         fullname = request.POST.get('fullname')
         regno = request.POST.get('regno')
         sub = request.POST.get('sub')
         desc = request.POST.get('desc')
         complainFor = request.POST.get('dropdown')
+        date = datetime.now()
         complainDetails = Complain(
             fullname=fullname,
             regno=regno,
             complainFor=complainFor,
             sub=sub,
             desc=desc,
-            date=datetime.today()
+            date=date,
+            id = "VITBC" + regno + str(date.strftime("%d%m%Y%H%M%S"))
         )
         complainDetails.save()
         messages.success(request, "Your Complain is successfully Submitted!")
 
-    return render(request, 'newcomplaint.html')
+    return render(request, 'newcomplaint.html', context)
 
 
 def profile(request):
@@ -61,22 +64,14 @@ def profile(request):
     return render(request, 'profile.html', context)
 
 
-def updateAccount(request):
+def updateComplain(request):
+    complain = Complain.objects.get(id = request.POST.get('complainId'))
     if request.method == "POST":
-        user = Account.objects.get(regno=request.user)
-
-        user.email = request.POST.get('email')
-        user.password = request.POST.get('password')
-        user.fullname = request.POST.get('name')
-        user.regno = request.POST.get('registrationno')
-        user.hostelGender = request.POST.get('hostelgender')
-        user.hostelBlock = request.POST.get('hostelBlock')
-        user.roomNo = request.POST.get('roomNumber')
-
-        user.save()
-        messages.success(request, "Profile Successfully updated.")
-        return redirect('profile')
-    return render(request, 'profile.html')
+        complain.status = request.POST.get('status')
+        complain.save()
+        messages.success(request, "Status Successfully updated.")
+        return redirect('supervisor')
+    return render(request, 'supervisor.html')
 
 
 def signup(request):

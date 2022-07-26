@@ -1,8 +1,16 @@
 {% extends 'supervisorbase.html' %}
 {% block title %}VITB Supervisor Portal{% endblock title %}
 {% block body %}
+
   <h1 class="my-4 text-center"> All complaints are displayed below. </h1>
 <div style="width: 900px; margin-left: 15%;">
+    {% if messages %}
+              {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}" role="alert">
+  {{ message }}
+ </div>
+              {% endfor %}
+    {% endif %}
     <table class="table table-dark my-5  ">
   <thead>
     <tr>
@@ -15,24 +23,26 @@
   </thead>
   <tbody>
   {% for complain in complains %}
+  <form method="POST" action="updateComplain" >
+                      {% csrf_token %}
     <tr>
-      <th scope="row">{{complain}}</th>
+      <th>
+          <select name = "complainId"> <option hidden="hidden" value="{{complain.id}}">{{complain.id}}</option></select>
+      </th>
       <th >{{complain.complainFor}}</th>
       <td>{{complain.sub}}</td>
       <td>{{complain.desc}}</td>
-      <td><select id="userType">
-        <option style="background-color:#008CBA; color:white; border:none; font-family: gilroy; " value="Select" disabled selected 
-        id="myDefault">Select</option>
-        <option style="border:none;font-family: gilroy;" value="1">Pending</option>
-        <option style="border:none;font-family: gilroy;" value="2">Seen</option>
-        <option style="border:none;font-family: gilroy;" value="3">Completed</option>
-
+      <td><select name="status">
+        <option style="background-color:#008CBA; color:white; border:none; font-family: gilroy; " value="Default" >{{complain.status}}</option>
+        <option style="border:none;font-family: gilroy;" value='Pending'>Pending</option>
+        <option style="border:none;font-family: gilroy;" value='Seen'>Seen</option>
+        <option style="border:none;font-family: gilroy;" value='Resolved'>Resolved</option>
      </select>
-<button style="background-color:#4CAF50;border:none;color:white; "  type="button" name="button"onclick="addOption()">submit</button></td></td>
+        <button style="background-color:#4CAF50;border:none;color:white; "  type="submit">Change</button>
+      </td></td>
     </tr>
-    
+  </form>
   {% endfor %}
-
   </tbody>
 </table>
 

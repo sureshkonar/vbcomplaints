@@ -39,9 +39,9 @@
 
                   <div class="row">
                     <div class="col-md-6 mb-4 pb-2">
-
+{% for user in users %}
                       <div class="form-outline">
-                        <input type="text" id="form3Examplev2" name = "regno" class="form-control form-control-lg" />
+                        <input type="text" id="form3Examplev2" name = "regno" class="form-control form-control-lg" value="{{user.username}}" />
                         <label style="color: white;font-family:gilroy;font-weight: 500;font-size: 18px;margin-top: 9px;margin-left: 15px;" class="form-label" for="form3Examplev2">Your Registration Number</label>
                       </div>
 
@@ -49,13 +49,13 @@
                     <div class="col-md-6 mb-4 pb-2">
 
                       <div class="form-outline">
-                        <input type="text" id="form3Examplev3" name = "fullname" class="form-control form-control-lg" />
+                        <input type="text" id="form3Examplev3" name = "fullname" class="form-control form-control-lg" value="{{user.first_name}} {{user.last_name}}" />
                         <label style="color: white;font-family:gilroy;font-weight: 500;font-size: 18px;margin-top: 9px;margin-left: 15px;" class="form-label" for="form3Examplev3">Your Full Name</label>
                       </div>
 
                     </div>
                   </div>
-
+{% endfor %}
                   <div class="mb-4 pb-2">
                     <div class="form-outline">
                       <input type="text" id="form3Examplev4" name = "sub" class="form-control form-control-lg" />

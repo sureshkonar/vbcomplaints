@@ -16,11 +16,11 @@
   <tbody>
   {% for complain in complains %}
     <tr>
-      <th scope="row">{{complain}}</th>
+      <th scope="row">{{complain.id}}</th>
       <th >{{complain.complainFor}}</th>
       <td>{{complain.sub}}</td>
       <td>{{complain.desc}}</td>
-      <td>Pending</td>
+      <td>{{complain.status}}</td>
     </tr>
   {% endfor %}
 

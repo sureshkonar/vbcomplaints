@@ -9,10 +9,11 @@ class Complain(models.Model):
     complainFor = models.CharField(max_length=122)
     sub = models.CharField(max_length=256)
     desc = models.CharField(max_length=1000)
-    date = models.DateField()
-
+    date = models.DateTimeField()
+    id = models.CharField(primary_key=True, max_length=100)
+    status = models.CharField(max_length=10, default='Pending', choices=[('Pending','Pending'),('Seen','Seen'),('Resolved','Resolved')])
     def __str__(self):
-        return "VITB" + self.regno + str(self.date).replace('-', '')
+        return self.id
 
 
 class Account(models.Model):
