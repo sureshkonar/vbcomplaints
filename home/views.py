@@ -66,12 +66,18 @@ def profile(request):
     return render(request, 'profile.html', context)
 
 
+def takeAction(action):
+    print("You have to email this person ", action)
+
+
 def updateComplain(request):
-    complain = Complain.objects.get(id = request.POST.get('complainId'))
+    complain = Complain.objects.get(id=request.POST.get('complainId'))
     if request.method == "POST":
         complain.status = request.POST.get('status')
+        complain.action = request.POST.get('action')
+        takeAction(complain.action)
+        messages.success(request, "Status Successfully updated. And Query "+complain.action+" via email.")
         complain.save()
-        messages.success(request, "Status Successfully updated.")
         return redirect('supervisor')
     return render(request, 'supervisor.html')
 

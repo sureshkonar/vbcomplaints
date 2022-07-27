@@ -13,6 +13,7 @@ class Complain(models.Model):
     id = models.CharField(primary_key=True, max_length=100)
     roomDetails = models.CharField(max_length=100)
     status = models.CharField(max_length=10, default='Pending')
+    action = models.CharField(max_length=50, default='No Action Taken', choices=[('Forwarded to Electrician','Forwarded to Electrician'),('Forwarded to Hostel Warden','Forwarded to Hostel Warden'),('Forwarded to Cleaning Staff','Forwarded to Cleaning Staff'),('Forwarded to Security','Forwarded to Security')])
     def __str__(self):
         return self.id
 

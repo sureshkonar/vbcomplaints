@@ -20,6 +20,8 @@
       <th scope="col">Subject</th>
       <th scope="col">Description</th>
       <th scope="col">Remark</th>
+      <th scope="col">Forward Complain</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -27,17 +29,24 @@
   <form method="POST" action="updateComplain" >
                       {% csrf_token %}
     <tr>
-      <th>
-           <input type="hidden" name = "complainId" value="{{complain.id}}">{{complain.id}}</input>
-      </th>
+      <th><input type="hidden" name = "complainId" value="{{complain.id}}">{{complain.id}}</input></th>
       <th >{{complain.roomDetails}}</th>
       <th >{{complain.complainFor}}</th>
       <td>{{complain.sub}}</td>
       <td>{{complain.desc}}</td>
       <td>
           <input  name="status" value="{{complain.status}}"/>
-        <button style="background-color:#4CAF50;border:none;color:white; "  type="submit">Send Remark</button>
-      </td></td>
+      </td>
+        <td>
+          <select class="custom-select mr-sm-2" name="action"  id="inlineFormCustomSelect">
+        <option value="{{complain.action}}">{{complain.action}}</option>
+        <option value="Forwarded to Electrician">Electrician</option>
+        <option value="Forwarded to Hostel Warden">Hostel Warden</option>
+            <option value="Forwarded to Cleaning Staff">Cleaning Staff</option>
+        <option value="Forwarded to Security">Security</option>
+      </select>
+      </td>
+      <td><button style="background-color:#4CAF50;border:none;color:white; "  type="submit">Update</button></td>
     </tr>
   </form>
   {% endfor %}
