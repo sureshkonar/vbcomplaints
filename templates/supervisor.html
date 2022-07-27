@@ -19,7 +19,7 @@
       <th scope="col">Complain For</th>
       <th scope="col">Subject</th>
       <th scope="col">Description</th>
-      <th scope="col">Status</th>
+      <th scope="col">Remark</th>
     </tr>
   </thead>
   <tbody>
@@ -28,19 +28,15 @@
                       {% csrf_token %}
     <tr>
       <th>
-          <select name = "complainId"> <option hidden="hidden" value="{{complain.id}}">{{complain.id}}</option></select>
+           <input type="hidden" name = "complainId" value="{{complain.id}}">{{complain.id}}</input>
       </th>
       <th >{{complain.roomDetails}}</th>
       <th >{{complain.complainFor}}</th>
       <td>{{complain.sub}}</td>
       <td>{{complain.desc}}</td>
-      <td><select name="status">
-        <option style="background-color:#008CBA; color:white; border:none; font-family: gilroy; " value="Default" >{{complain.status}}</option>
-        <option style="border:none;font-family: gilroy;" value='Pending'>Pending</option>
-        <option style="border:none;font-family: gilroy;" value='Seen'>Seen</option>
-        <option style="border:none;font-family: gilroy;" value='Resolved'>Resolved</option>
-     </select>
-        <button style="background-color:#4CAF50;border:none;color:white; "  type="submit">Change</button>
+      <td>
+          <input  name="status" value="{{complain.status}}"/>
+        <button style="background-color:#4CAF50;border:none;color:white; "  type="submit">Send Remark</button>
       </td></td>
     </tr>
   </form>

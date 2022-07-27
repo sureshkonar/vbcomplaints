@@ -12,7 +12,7 @@ class Complain(models.Model):
     date = models.DateTimeField()
     id = models.CharField(primary_key=True, max_length=100)
     roomDetails = models.CharField(max_length=100)
-    status = models.CharField(max_length=10, default='Pending', choices=[('Pending','Pending'),('Seen','Seen'),('Resolved','Resolved')])
+    status = models.CharField(max_length=10, default='Pending')
     def __str__(self):
         return self.id
 
