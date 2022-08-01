@@ -39,8 +39,150 @@ def newc(request):
         sub = request.POST.get('sub')
         desc = request.POST.get('desc')
         complainFor = request.POST.get('dropdown')
-        roomDetails = request.POST.get('roomDetails')
+        hostelName = request.POST.get('hostelName')
+        hostelBlock = request.POST.get('hostelBlock')
+        roomNumber = request.POST.get('hostelRoom')
         date = datetime.now()
+
+        if hostelName == 'Boys Hostel':
+            if hostelBlock == 'Block 1':
+                hostelBlockSupervisor = 'Boys Hostel Block 1 Supervisor'
+                if complainFor == 'Mess':
+                    hostelBlockDepartmentSupervisor = 'Boys Hostel Block 1 Mess Supervisor'
+                elif complainFor == 'Drinking Water':
+                    hostelBlockDepartmentSupervisor = 'Boys Hostel Block 1 Drinking Water Supervisor'
+                elif complainFor == 'Wifi':
+                    hostelBlockDepartmentSupervisor = 'Boys Hostel Block 1 Wifi Supervisor'
+                elif complainFor == 'Washrooms':
+                    hostelBlockDepartmentSupervisor = 'Boys Hostel Block 1 Washrooms Supervisor'
+                elif complainFor == 'Bullying':
+                    hostelBlockDepartmentSupervisor = 'Boys Hostel Block 1 Bullying Supervisor'
+                elif complainFor == 'Faculty':
+                    hostelBlockDepartmentSupervisor = 'Boys Hostel Block 1 Faculty Supervisor'
+                else:
+                    complainFor = 'Not Selected By the Student'
+
+            elif hostelBlock == 'Block 2':
+                hostelBlockSupervisor = 'Boys Hostel Block 2 Supervisor'
+                if complainFor == 'Mess':
+                    hostelBlockDepartmentSupervisor = 'Boys Hostel Block 2 Mess Supervisor'
+                elif complainFor == 'Drinking Water':
+                    hostelBlockDepartmentSupervisor = 'Boys Hostel Block 2 Drinking Water Supervisor'
+                elif complainFor == 'Wifi':
+                    hostelBlockDepartmentSupervisor = 'Boys Hostel Block 2 Wifi Supervisor'
+                elif complainFor == 'Washrooms':
+                    hostelBlockDepartmentSupervisor = 'Boys Hostel Block 2 Washrooms Supervisor'
+                elif complainFor == 'Bullying':
+                    hostelBlockDepartmentSupervisor = 'Boys Hostel Block 2 Bullying Supervisor'
+                elif complainFor == 'Faculty':
+                    hostelBlockDepartmentSupervisor = 'Boys Hostel Block 2 Faculty Supervisor'
+                else:
+                    complainFor = 'Not Selected By the Student'
+            elif hostelBlock == 'Block 3':
+                hostelBlockSupervisor = 'Boys Hostel Block 3 Supervisor'
+                if complainFor == 'Mess':
+                    hostelBlockDepartmentSupervisor = 'Boys Hostel Block 3 Mess Supervisor'
+                elif complainFor == 'Drinking Water':
+                    hostelBlockDepartmentSupervisor = 'Boys Hostel Block 3 Drinking Water Supervisor'
+                elif complainFor == 'Wifi':
+                    hostelBlockDepartmentSupervisor = 'Boys Hostel Block 3 Wifi Supervisor'
+                elif complainFor == 'Washrooms':
+                    hostelBlockDepartmentSupervisor = 'Boys Hostel Block 3 Washrooms Supervisor'
+                elif complainFor == 'Bullying':
+                    hostelBlockDepartmentSupervisor = 'Boys Hostel Block 3 Bullying Supervisor'
+                elif complainFor == 'Faculty':
+                    hostelBlockDepartmentSupervisor = 'Boys Hostel Block 3 Faculty Supervisor'
+                else:
+                    complainFor = 'Not Selected By the Student'
+            elif  hostelBlock == 'Block 4':
+                hostelBlockSupervisor = 'Boys Hostel Block 4 Supervisor'
+                if complainFor == 'Mess':
+                    hostelBlockDepartmentSupervisor = 'Boys Hostel Block 4 Mess Supervisor'
+                elif complainFor == 'Drinking Water':
+                    hostelBlockDepartmentSupervisor = 'Boys Hostel Block 4 Drinking Water Supervisor'
+                elif complainFor == 'Wifi':
+                    hostelBlockDepartmentSupervisor = 'Boys Hostel Block 4 Wifi Supervisor'
+                elif complainFor == 'Washrooms':
+                    hostelBlockDepartmentSupervisor = 'Boys Hostel Block 4 Washrooms Supervisor'
+                elif complainFor == 'Bullying':
+                    hostelBlockDepartmentSupervisor = 'Boys Hostel Block 4 Bullying Supervisor'
+                elif complainFor == 'Faculty':
+                    hostelBlockDepartmentSupervisor = 'Boys Hostel Block 4 Faculty Supervisor'
+                else:
+                    complainFor = 'Not Selecte3'
+            else :
+                hostelBlockSupervisor = 'Unknown'
+        else :
+            if hostelBlock == 'Block 1':
+                hostelBlockSupervisor = 'Girls Hostel Block 1 Supervisor'
+                if complainFor == 'Mess':
+                    hostelBlockDepartmentSupervisor = 'Girls Hostel Block 1 Mess Supervisor'
+                elif complainFor == 'Drinking Water':
+                    hostelBlockDepartmentSupervisor = 'Girls Hostel Block 1 Drinking Water Supervisor'
+                elif complainFor == 'Wifi':
+                    hostelBlockDepartmentSupervisor = 'Girls Hostel Block 1 Wifi Supervisor'
+                elif complainFor == 'Washrooms':
+                    hostelBlockDepartmentSupervisor = 'Girls Hostel Block 1 Washrooms Supervisor'
+                elif complainFor == 'Bullying':
+                    hostelBlockDepartmentSupervisor = 'Girls Hostel Block 1 Bullying Supervisor'
+                elif complainFor == 'Faculty':
+                    hostelBlockDepartmentSupervisor = 'Girls Hostel Block 1 Faculty Supervisor'
+                else:
+                    complainFor = 'Not Selected By the Student'
+
+            elif hostelBlock == 'Block 2':
+                hostelBlockSupervisor = 'Girls Hostel Block 2 Supervisor'
+                if complainFor == 'Mess':
+                    hostelBlockDepartmentSupervisor = 'Girls Hostel Block 2 Mess Supervisor'
+                elif complainFor == 'Drinking Water':
+                    hostelBlockDepartmentSupervisor = 'Girls Hostel Block 2 Drinking Water Supervisor'
+                elif complainFor == 'Wifi':
+                    hostelBlockDepartmentSupervisor = 'Girls Hostel Block 2 Wifi Supervisor'
+                elif complainFor == 'Washrooms':
+                    hostelBlockDepartmentSupervisor = 'Girls Hostel Block 2 Washrooms Supervisor'
+                elif complainFor == 'Bullying':
+                    hostelBlockDepartmentSupervisor = 'Girls Hostel Block 2 Bullying Supervisor'
+                elif complainFor == 'Faculty':
+                    hostelBlockDepartmentSupervisor = 'Girls Hostel Block 2 Faculty Supervisor'
+                else:
+                    complainFor = 'Not Selected By the Student'
+            elif hostelBlock == 'Block 3':
+                hostelBlockSupervisor = 'Girls Hostel Block 3 Supervisor'
+                if complainFor == 'Mess':
+                    hostelBlockDepartmentSupervisor = 'Girls Hostel Block 3 Mess Supervisor'
+                elif complainFor == 'Drinking Water':
+                    hostelBlockDepartmentSupervisor = 'Girls Hostel Block 3 Drinking Water Supervisor'
+                elif complainFor == 'Wifi':
+                    hostelBlockDepartmentSupervisor = 'Girls Hostel Block 3 Wifi Supervisor'
+                elif complainFor == 'Washrooms':
+                    hostelBlockDepartmentSupervisor = 'Girls Hostel Block 3 Washrooms Supervisor'
+                elif complainFor == 'Bullying':
+                    hostelBlockDepartmentSupervisor = 'Girls Hostel Block 3 Bullying Supervisor'
+                elif complainFor == 'Faculty':
+                    hostelBlockDepartmentSupervisor = 'Girls Hostel Block 3 Faculty Supervisor'
+                else:
+                    complainFor = 'Not Selected By the Student'
+            elif hostelBlock == 'Block 4':
+                hostelBlockSupervisor = 'Girls Hostel Block 4 Supervisor'
+                if complainFor == 'Mess':
+                    hostelBlockDepartmentSupervisor = 'Girls Hostel Block 4 Mess Supervisor'
+                elif complainFor == 'Drinking Water':
+                    hostelBlockDepartmentSupervisor = 'Girls Hostel Block 4 Drinking Water Supervisor'
+                elif complainFor == 'Wifi':
+                    hostelBlockDepartmentSupervisor = 'Girls Hostel Block 4 Wifi Supervisor'
+                elif complainFor == 'Washrooms':
+                    hostelBlockDepartmentSupervisor = 'Girls Hostel Block 4 Washrooms Supervisor'
+                elif complainFor == 'Bullying':
+                    hostelBlockDepartmentSupervisor = 'Girls Hostel Block 4 Bullying Supervisor'
+                elif complainFor == 'Faculty':
+                    hostelBlockDepartmentSupervisor = 'Girls Hostel Block 4 Faculty Supervisor'
+                else:
+                    complainFor = 'Not Selected by the Student'
+            else:
+                hostelBlockSupervisor = 'Unknown'
+
+
+
         complainDetails = Complain(
             fullname=fullname,
             regno=regno,
@@ -48,8 +190,12 @@ def newc(request):
             sub=sub,
             desc=desc,
             date=date,
-            id="VITBC" + regno + str(date.strftime("%d%m%Y%H%M%S")),
-            roomDetails=roomDetails
+            id="VITBC" + str(date.strftime("%d%m%Y%H%M%S")),
+            hostelName = hostelName,
+            hostelBlock = hostelBlock,
+            roomNumber = roomNumber,
+            hostelBlockSupervisor = hostelBlockSupervisor,
+            hostelBlockDepartmentSupervisor = hostelBlockDepartmentSupervisor
         )
         complainDetails.save()
         messages.success(request, "Your Complain is successfully Submitted!")

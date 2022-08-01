@@ -15,12 +15,23 @@
   <thead>
     <tr>
       <th scope="col">Complain Id</th>
-        <th  scope="col">Hostel Details</th>
-      <th scope="col">Complain For</th>
+      <th scope="col">Student Name</th>
+      <th scope="col">Registration Number</th>
+        <th scope="col">Complain For</th>
       <th scope="col">Subject</th>
       <th scope="col">Description</th>
-      <th scope="col">Remark</th>
-      <th scope="col">Forward Complain</th>
+
+      <th scope="col">Hostel Name</th>
+      <th scope="col">Hostel Block</th>
+      <th scope="col">Room Number</th>
+
+      <th scope="col">Hostel Block Supervisor</th>
+        <th scope="col">Hostel Block Department Supervisor</th>
+        <th  scope="col">Workers Assigned</th>
+
+      <th scope="col">Supervisor Remark</th>
+      <th scope="col">Action Taken </th>
+      <th scope="col">Query resolve Date</th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -30,10 +41,18 @@
                       {% csrf_token %}
     <tr>
       <th><input type="hidden" name = "complainId" value="{{complain.id}}">{{complain.id}}</input></th>
-      <th >{{complain.roomDetails}}</th>
-      <th >{{complain.complainFor}}</th>
-      <td>{{complain.sub}}</td>
-      <td>{{complain.desc}}</td>
+      <th><input type="hidden" name = "complainId" value="{{complain.fullname}}">{{complain.fullname}}</input></th>
+      <th><input type="hidden" name = "complainId" value="{{complain.regno}}">{{complain.regno}}</input></th>
+      <th><input type="hidden" name = "complainId" value="{{complain.complainFor}}">{{complain.complainFor}}</input></th>
+      <th><input type="hidden" name = "complainId" value="{{complain.sub}}">{{complain.sub}}</input></th>
+      <th><input type="hidden" name = "complainId" value="{{complain.desc}}">{{complain.desc}}</input></th>
+      <th><input type="hidden" name = "complainId" value="{{complain.hostelName}}">{{complain.hostelName}}</input></th>
+      <th><input type="hidden" name = "complainId" value="{{complain.hostelBlock}}">{{complain.hostelBlock}}</input></th>
+      <th><input type="hidden" name = "complainId" value="{{complain.roomNumber}}">{{complain.roomNumber}}</input></th>
+      <th><input type="hidden" name = "complainId" value="{{complain.hostelBlockSupervisor}}">{{complain.hostelBlockSupervisor}}</input></th>
+      <th><input type="hidden" name = "complainId" value="{{complain.hostelBlockDepartmentSupervisor}}">{{complain.hostelBlockDepartmentSupervisor}}</input></th>
+      <th><input type="hidden" name = "complainId" value="{{complain.workerName}}">{{complain.workerName}}</input></th>
+
       <td>
           <input  name="status" value="{{complain.status}}"/>
       </td>
@@ -46,6 +65,7 @@
         <option value="Forwarded to Security">Security</option>
       </select>
       </td>
+        <th><input type="date" name="complainId" value="{{complain.complainResolveDate}}"/></th>
       <td><button style="background-color:#4CAF50;border:none;color:white; "  type="submit">Update</button></td>
     </tr>
   </form>

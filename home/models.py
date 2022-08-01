@@ -1,6 +1,7 @@
+from datetime import datetime
+
 from django.db import models
 from django.contrib.auth.models import User
-
 
 # Create your models here.
 class Complain(models.Model):
@@ -11,9 +12,23 @@ class Complain(models.Model):
     desc = models.CharField(max_length=1000)
     date = models.DateTimeField()
     id = models.CharField(primary_key=True, max_length=100)
-    roomDetails = models.CharField(max_length=100)
+
+    hostelName = models.CharField(max_length=100)
+    hostelBlock = models.CharField(max_length=100)
+    roomNumber = models.CharField(max_length=100)
+
+    hostelBlockSupervisor = models.CharField(max_length=100, default='Not Assigned')
+    hostelBlockDepartmentSupervisor = models.CharField(max_length=100, default='Not Assigned')
+    workerName = models.CharField(max_length=100, default='Not Assigned')
+
+    complainResolveDate = models.DateField(null = True, blank=True)
+
+
     status = models.CharField(max_length=10, default='Pending')
     action = models.CharField(max_length=50, default='No Action Taken', choices=[('Forwarded to Electrician','Forwarded to Electrician'),('Forwarded to Hostel Warden','Forwarded to Hostel Warden'),('Forwarded to Cleaning Staff','Forwarded to Cleaning Staff'),('Forwarded to Security','Forwarded to Security')])
+
+
+
     def __str__(self):
         return self.id
 

@@ -26,6 +26,43 @@
     {% endif %}
                     <h3 style="font-family:Arial;font-weight: 900;color:rgb(9, 9, 170);font-size: 44px;font-style:bolder ;margin-left: 63px;" class="fw-normal mb-5" > Complain Register Portal</h3>
 
+
+                       <div class="row">
+                    <div class="col-md-6 mb-4 pb-2">
+{% for user in users %}
+                      <div class="form-outline">
+                        <input type="text" id="form3Examplev2" name = "regno" class="form-control form-control-lg" value="{{user.username}}" readonly/>
+                        <label style="color: white;font-family:gilroy;font-weight: 500;font-size: 18px;margin-top: 9px;margin-left: 15px;" class="form-label" for="form3Examplev2">Your Registration Number</label>
+                      </div>
+
+                    </div>
+                    <div class="col-md-6 mb-4 pb-2">
+
+                      <div class="form-outline">
+                        <input type="text" id="form3Examplev3" name = "fullname" class="form-control form-control-lg" value="{{user.first_name}} {{user.last_name}}" readonly/>
+                        <label style="color: white;font-family:gilroy;font-weight: 500;font-size: 18px;margin-top: 9px;margin-left: 15px;" class="form-label" for="form3Examplev3">Your Full Name</label>
+                      </div>
+
+                    </div>
+                  </div>
+
+                    <div >
+
+                      <div class="form-outline">
+                        <input type="text" id="form3v3Examplev3" name = "hostelName" class="form-control form-control-lg w-75" value="{{user.account.hostelGender}}" readonly/>
+                        <label style="color: white;font-family:gilroy;font-weight: 500;font-size: 18px;margin-top: 9px;margin-left: 15px;" class="form-label" for="form3v3Examplev3">Hostel: </label>
+                      </div>
+                        <div class="form-outline">
+                        <input type="text" id="form333v3Examplev3" name = "hostelBlock" class="form-control form-control-lg w-75" value="{{user.account.hostelBlock}}" readonly/>
+                        <label style="color: white;font-family:gilroy;font-weight: 500;font-size: 18px;margin-top: 9px;margin-left: 15px;" class="form-label" for="form333v3Examplev3">Block: </label>
+                      </div>
+                        <div class="form-outline">
+                        <input type="text" id="form3333v3Examplev3" name = "hostelRoom" class="form-control form-control-lg w-75" value="{{user.account.roomNo}}" readonly/>
+                        <label style="color: white;font-family:gilroy;font-weight: 500;font-size: 18px;margin-top: 9px;margin-left: 15px;" class="form-label" for="form3333v3Examplev3">Room Number: </label>
+                      </div>
+
+                    </div>
+
                     <select style="font-weight:600;font-size: 19px;font-family: gilroy;letter-spacing: 0.5px;border: none;border-radius: 10px;margin-left: 87px;" class="select" name = "dropdown">
                       <option  value="None">Choose The Field You Want to Complain For</option>
                       <option  value="Mess">Mess</option>
@@ -36,34 +73,6 @@
                       <option value="Faculty">Faculty</option>
                     </select>
                   </div>
-
-                  <div class="row">
-                    <div class="col-md-6 mb-4 pb-2">
-{% for user in users %}
-                      <div class="form-outline">
-                        <input type="text" id="form3Examplev2" name = "regno" class="form-control form-control-lg" value="{{user.username}}" />
-                        <label style="color: white;font-family:gilroy;font-weight: 500;font-size: 18px;margin-top: 9px;margin-left: 15px;" class="form-label" for="form3Examplev2">Your Registration Number</label>
-                      </div>
-
-                    </div>
-                    <div class="col-md-6 mb-4 pb-2">
-
-                      <div class="form-outline">
-                        <input type="text" id="form3Examplev3" name = "fullname" class="form-control form-control-lg" value="{{user.first_name}} {{user.last_name}}" />
-                        <label style="color: white;font-family:gilroy;font-weight: 500;font-size: 18px;margin-top: 9px;margin-left: 15px;" class="form-label" for="form3Examplev3">Your Full Name</label>
-                      </div>
-
-                    </div>
-                  </div>
-
-                    <div >
-
-                      <div class="form-outline">
-                        <input type="text" id="form3v3Examplev3" name = "roomDetails" class="form-control form-control-lg w-75" value="{{user.account.hostelGender}}, {{user.account.hostelBlock}}, Room Number: {{user.account.roomNo}}" />
-                        <label style="color: white;font-family:gilroy;font-weight: 500;font-size: 18px;margin-top: 9px;margin-left: 15px;" class="form-label" for="form3v3Examplev3">Room Details: </label>
-                      </div>
-
-                    </div>
 
 
                     </div>
