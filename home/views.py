@@ -36,17 +36,17 @@ def hostelBlockSupervisor(request):
         filter = 'Boys Hostel Block 1 Supervisor'
     elif str(request.user) == 'bhb2s':
         filter = 'Boys Hostel Block 2 Supervisor'
-    elif str(request.user) == 'bhb2s':
+    elif str(request.user) == 'bhb3s':
         filter = 'Boys Hostel Block 3 Supervisor'
-    elif str(request.user) == 'bhb2s':
+    elif str(request.user) == 'bhb4s':
         filter = 'Boys Hostel Block 4 Supervisor'
     elif str(request.user) == 'ghb1s':
         filter = 'Girls Hostel Block 1 Supervisor'
     elif str(request.user) == 'ghb2s':
         filter = 'Girls Hostel Block 2 Supervisor'
-    elif str(request.user) == 'ghb2s':
+    elif str(request.user) == 'ghb3s':
         filter = 'Girls Hostel Block 3 Supervisor'
-    elif str(request.user) == 'ghb2s':
+    elif str(request.user) == 'ghb4s':
         filter = 'Girls Hostel Block 4 Supervisor'
     complains = Complain.objects.all().filter(hostelBlockSupervisor=filter)
     workers = Workers.objects.all()
