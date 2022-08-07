@@ -1,8 +1,8 @@
 {% extends 'supervisorbase.html' %}
-{% block title %}VITB Supervisor Portal{% endblock title %}
+{% block title %}VITB Hostel Block Supervisor Portal{% endblock title %}
 {% block body %}
 
-  <h1 class="my-4 text-center"> All complaints are displayed below. </h1>
+  <h1 class="my-4 text-center"> All complains are displayed below. </h1>
 <div style="width: 900px; margin-left: 15%;">
     {% if messages %}
               {% for message in messages %}
@@ -21,11 +21,8 @@
       <th scope="col">Subject</th>
       <th scope="col">Description</th>
 
-      <th scope="col">Hostel Name</th>
-      <th scope="col">Hostel Block</th>
       <th scope="col">Room Number</th>
 
-      <th scope="col">Hostel Block Supervisor</th>
         <th scope="col">Hostel Block Department Supervisor</th>
         <th  scope="col">Workers Assigned</th>
 
@@ -46,10 +43,7 @@
       <th><input type="hidden" name = "complainFor" value="{{complain.complainFor}}">{{complain.complainFor}}</input></th>
       <th><input type="hidden" name = "sub" value="{{complain.sub}}">{{complain.sub}}</input></th>
       <th><input type="hidden" name = "desc" value="{{complain.desc}}">{{complain.desc}}</input></th>
-      <th><input type="hidden" name = "hn" value="{{complain.hostelName}}">{{complain.hostelName}}</input></th>
-      <th><input type="hidden" name = "hb" value="{{complain.hostelBlock}}">{{complain.hostelBlock}}</input></th>
       <th><input type="hidden" name = "roomNumber" value="{{complain.roomNumber}}">{{complain.roomNumber}}</input></th>
-      <th><input type="hidden" name = "hbs" value="{{complain.hostelBlockSupervisor}}">{{complain.hostelBlockSupervisor}}</input></th>
       <th><input type="hidden" name = "hbds" value="{{complain.hostelBlockDepartmentSupervisor}}">{{complain.hostelBlockDepartmentSupervisor}}</input></th>
       <th><input type="hidden" name = "workername" value="{{complain.workerName}}">{{complain.workerName}}</input></th>
 

@@ -27,6 +27,7 @@ urlpatterns = [
     path('updateComplain', views.updateComplain, name='updateComplain'),
     path('', views.loginUser, name='login'),
     path('logout', views.logoutUser, name='logout'),
-    path('supervisor', views.supervisor, name='supervisor')
+    path('supervisor', views.supervisor, name='supervisor'),
+    path('hostelblocksupervisor', views.hostelBlockSupervisor, name='hostelblocksupervisor')
 
 ]

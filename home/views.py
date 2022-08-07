@@ -15,6 +15,8 @@ def home(request):
         return redirect('/')
     if str(request.user) == 'supervisor':
         return redirect('supervisor')
+    if str(request.user) in ['bhb1s','bhb2s','bhb3s','bhb4s','ghb1s','ghb2s','ghb3s','ghb4s']:
+        return redirect('hostelblocksupervisor')
     complains = Complain.objects.all().filter(regno=request.user)
     context = {'complains': complains}
     return render(request, 'home.html', context)
@@ -27,6 +29,35 @@ def supervisor(request):
     context = {'complains': complains}
     return render(request, 'supervisor.html', context)
 
+def hostelBlockSupervisor(request):
+    if str(request.user) not in ['bhb1s','bhb2s','bhb3s','bhb4s','ghb1s','ghb2s','ghb3s','ghb4s']:
+        return redirect('/')
+    if str(request.user) == 'bhb1s':
+        filter = 'Boys Hostel Block 1 Supervisor'
+    elif str(request.user) == 'bhb2s':
+        filter = 'Boys Hostel Block 2 Supervisor'
+    elif str(request.user) == 'bhb2s':
+        filter = 'Boys Hostel Block 3 Supervisor'
+    elif str(request.user) == 'bhb2s':
+        filter = 'Boys Hostel Block 4 Supervisor'
+    elif str(request.user) == 'ghb1s':
+        filter = 'Girls Hostel Block 1 Supervisor'
+    elif str(request.user) == 'ghb2s':
+        filter = 'Girls Hostel Block 2 Supervisor'
+    elif str(request.user) == 'ghb2s':
+        filter = 'Girls Hostel Block 3 Supervisor'
+    elif str(request.user) == 'ghb2s':
+        filter = 'Girls Hostel Block 4 Supervisor'
+    complains = Complain.objects.all().filter(hostelBlockSupervisor=filter)
+    context = {'complains': complains}
+    return render(request, 'hostelblocksupervisor.html', context)
+
+# def hostelBlockDepartmentSupervisor(request):
+#     if str(request.user) not in ['bhb1s','bhb2s','bhb3s','bhb4s','ghb1s','ghb2s','ghb3s','ghb4s']:
+#         return redirect('/')
+#     complains = Complain.objects.all()
+#     context = {'complains': complains}
+#     return render(request, 'supervisor.html', context)
 
 def newc(request):
     if request.user.is_anonymous:
@@ -221,8 +252,10 @@ def updateComplain(request):
     if request.method == "POST":
         complain.status = request.POST.get('status')
         complain.action = request.POST.get('action')
-        takeAction(complain.action)
-        messages.success(request, "Status Successfully updated. And Query "+complain.action+" via email.")
+        complain.complainResolveDate = request.POST.get('complainResolvedDate')
+        print(complain.complainResolveDate)
+        # takeAction(complain.action)
+        messages.success(request, "Status Successfully updated. And Query "+complain.action+".")
         complain.save()
         return redirect('supervisor')
     return render(request, 'supervisor.html')
