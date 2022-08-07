@@ -1,5 +1,5 @@
 from django.contrib import admin
-from home.models import Complain
+from home.models import Complain, complainFields
 from home.models import Account
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin
@@ -18,3 +18,4 @@ class ShankarUserAdmin(UserAdmin):
 admin.site.unregister(User)
 admin.site.register(User, ShankarUserAdmin)
 admin.site.register(Complain)
+admin.site.register(complainFields)

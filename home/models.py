@@ -3,6 +3,12 @@ from datetime import datetime
 from django.db import models
 from django.contrib.auth.models import User
 
+
+class complainFields(models.Model):
+    complainFields = models.CharField(max_length=122)
+    def __str__(self):
+        return self.complainFields
+
 # Create your models here.
 class Complain(models.Model):
     fullname = models.CharField(max_length=122)

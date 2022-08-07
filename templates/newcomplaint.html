@@ -63,14 +63,13 @@
 
                     </div>
 
+
                     <select style="font-weight:600;font-size: 19px;font-family: gilroy;letter-spacing: 0.5px;border: none;border-radius: 10px;margin-left: 87px;" class="select" name = "dropdown">
+
                       <option  value="None">Choose The Field You Want to Complain For</option>
-                      <option  value="Mess">Mess</option>
-                      <option value="Drinking Water">Drinking Water</option>
-                      <option value="Wifi">Wifi</option>
-                      <option value="Washrooms">Washrooms</option>
-                      <option value="Bullying">Bullying</option>
-                      <option value="Faculty">Faculty</option>
+                        {% for complain in complainFields %}
+                      <option  value="{{complain.complainFields}}">{{complain.complainFields}}</option>
+                        {% endfor %}
                     </select>
                   </div>
 

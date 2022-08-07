@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from datetime import datetime, date
-from home.models import Complain
+from home.models import Complain, complainFields
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
@@ -63,7 +63,8 @@ def newc(request):
     if request.user.is_anonymous:
         return redirect('/')
     users = User.objects.all().filter(username=request.user)
-    context = {'users': users}
+    complains = complainFields.objects.all()
+    context = {'users': users, 'complainFields': complains}
     if request.method == "POST":
         fullname = request.POST.get('fullname')
         regno = request.POST.get('regno')
