@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from datetime import datetime, date
-from home.models import Complain, complainFields
+from home.models import Complain, complainFields, Workers
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
@@ -49,7 +49,8 @@ def hostelBlockSupervisor(request):
     elif str(request.user) == 'ghb2s':
         filter = 'Girls Hostel Block 4 Supervisor'
     complains = Complain.objects.all().filter(hostelBlockSupervisor=filter)
-    context = {'complains': complains}
+    workers = Workers.objects.all()
+    context = {'complains': complains, 'workers': workers}
     return render(request, 'hostelblocksupervisor.html', context)
 
 # def hostelBlockDepartmentSupervisor(request):
@@ -252,13 +253,18 @@ def updateComplain(request):
     complain = Complain.objects.get(id=request.POST.get('complainId'))
     if request.method == "POST":
         complain.status = request.POST.get('status')
-        complain.action = request.POST.get('action')
+        if request.POST.get('action'):
+            complain.action = request.POST.get('action')
         complain.complainResolveDate = request.POST.get('complainResolvedDate')
-        print(complain.complainResolveDate)
+        complain.workerName = request.POST.get('workerChosen')
         # takeAction(complain.action)
-        messages.success(request, "Status Successfully updated. And Query "+complain.action+".")
+        messages.success(request, "Status Successfully updated.")
         complain.save()
-        return redirect('supervisor')
+        if request.user == 'supervisor':
+            return redirect('supervisor')
+        else:
+            return redirect('hostelblocksupervisor')
+
     return render(request, 'supervisor.html')
 
 

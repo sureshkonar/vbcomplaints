@@ -38,6 +38,12 @@ class Complain(models.Model):
     def __str__(self):
         return self.id
 
+class Workers(models.Model):
+    workerName = models.CharField(max_length=100)
+    workerField = models.CharField(max_length=100)
+
+    def __str__(self):
+        return str(self.workerName) + " " + str(self.workerField)
 
 class Account(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

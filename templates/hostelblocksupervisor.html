@@ -27,8 +27,6 @@
         <th  scope="col">Workers Assigned</th>
 
       <th scope="col">Supervisor Remark</th>
-      <th scope="col">Action Taken </th>
-      <th scope="col">Query resolve Date</th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -45,21 +43,23 @@
       <th><input type="hidden" name = "desc" value="{{complain.desc}}">{{complain.desc}}</input></th>
       <th><input type="hidden" name = "roomNumber" value="{{complain.roomNumber}}">{{complain.roomNumber}}</input></th>
       <th><input type="hidden" name = "hbds" value="{{complain.hostelBlockDepartmentSupervisor}}">{{complain.hostelBlockDepartmentSupervisor}}</input></th>
-      <th><input type="hidden" name = "workername" value="{{complain.workerName}}">{{complain.workerName}}</input></th>
+
+
+        <th>
+            <select class="custom-select mr-sm-2" name="workerChosen" >
+        <option value="{{complain.workerName}}">{{complain.workerName}}</option>
+                {% for worker in workers %}
+                {% if worker.workerField == complain.complainFor %}
+        <option value="{{worker.workerName}}">{{worker.workerName}}</option>
+                {% endif %}
+                {% endfor %}
+                <option value="To be handled by warden">To be handled by warden</option>
+
+      </select>
 
       <td>
           <input  name="status" value="{{complain.status}}"/>
       </td>
-        <td>
-          <select class="custom-select mr-sm-2" name="action"  id="inlineFormCustomSelect">
-        <option value="{{complain.action}}">{{complain.action}}</option>
-        <option value="Forwarded to Electrician">Electrician</option>
-        <option value="Forwarded to Hostel Warden">Hostel Warden</option>
-            <option value="Forwarded to Cleaning Staff">Cleaning Staff</option>
-        <option value="Forwarded to Security">Security</option>
-      </select>
-      </td>
-        <th><input type="date" name="complainResolvedDate" value="{{complain.complainResolveDate}}"/>{{complain.complainResolveDate}}</th>
       <td><button style="background-color:#4CAF50;border:none;color:white; "  type="submit">Update</button></td>
     </tr>
   </form>
